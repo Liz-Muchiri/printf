@@ -42,9 +42,9 @@ int _printf(const char *format, ...)
 	return (count);
 }
 
-int main(void)
+/*int main(void)
 {
 	_printf("The number is %d.\n", 42);
 	return (0);
-}
+}*/
 
