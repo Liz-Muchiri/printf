@@ -1,4 +1,4 @@
-#include MAIN_H
+#include "main.h"
 #include <stdio.h>
 #include <stdarg.h>
 
@@ -41,10 +41,3 @@ int _printf(const char *format, ...)
 
 	return (count);
 }
-
-int main(void)
-{
-	_printf("The number is %d.\n", 42);
-	return (0);
-}
-
