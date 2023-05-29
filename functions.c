@@ -1,9 +1,11 @@
+#include MAIN_H
 #include <stdio.h>
 #include <stdarg.h>
 
 int _printf(const char *format, ...)
 {
 	va_list args;
+
 	va_start(args, format);
 
 	int count = 0;
@@ -16,7 +18,9 @@ int _printf(const char *format, ...)
 			if (*format == 'd' || *format == 'i')
 			{
 				int num = va_arg(args, int);
+
 				count += printf("%d", num);
+
 			}
 		}
 		else if (*format == '%' && *(format + 1) == '%')
