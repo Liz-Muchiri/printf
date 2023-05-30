@@ -1,14 +1,17 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdarg.h>
+/**
+ * _printf - prints acording to a format
+ * @format: character string
+ * Return: count
+ */
 
 int _printf(const char *format, ...)
 {
+	int count = 0;
+
 	va_list args;
 
 	va_start(args, format);
-
-	int count = 0;
 
 	while (*format != '\0')
 	{
