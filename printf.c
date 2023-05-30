@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdarg.h>
 
 /**
  * _printf - Custom implementation of printf function
@@ -21,29 +20,27 @@ if (format[i] == '%')
 i++;
 switch (format[i])
 {
-case 'c':
-count += print_char(args, NULL, va_arg(args, int));
+case '':
+count += handle_print("%c", &i, args, NULL, 0, 0, 0, 0);
 break;
 case 's':
-count += print_string(args, NULL, va_arg(args, char *));
+count += handle_print("%s", &i, args, NULL, 0, 0, 0, 0);
 break;
 case '%':
-count += print_percent(args, NULL);
+count += handle_print("%%", &i, args, NULL, 0, 0, 0, 0);
 break;
 default:
-count += print_percent(args, NULL);
-count += print_char(args, NULL, format[i]);
+count += handle_print("%%", &i, args, NULL, 0, 0, 0, 0);
 break;
 }
 }
 else
 {
-count += print_char(args, NULL, format[i]);
+count += handle_print("%c", NULL, args, &format[i], 0, 0, 0, 0);
 }
 }
 
-va_end(args);
+va(args);
 
 return (count);
 }
-
