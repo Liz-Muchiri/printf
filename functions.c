@@ -1,6 +1,9 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdarg.h>
+/**
+ * _printf - prints acording to a format
+ * @format: character string
+ * Return: count
+ */
 
 int _printf(const char *format, ...)
 {
