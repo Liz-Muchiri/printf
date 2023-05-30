@@ -8,7 +8,7 @@
  */
 int _putchar(char c)
 {
-return (write(1, &c, 1));
+	return (write(1, &c, 1));
 }
 
 /**
@@ -20,33 +20,32 @@ return (write(1, &c, 1));
  */
 int _printf(const char *format, ...)
 {
-va_list args;
-int count = 0;
-char buffer[BUFF_SIZE] = {0};
-int i = 0;
+	va_list args;
+	int count = 0;
+	char buffer[BUFF_SIZE] = {0};
+	int i = 0;
 
-va_start(args, format);
+	va_start(args, format);
 
-while (format[i])
+	while (format[i])
 {
-if (format[i] == '%')
+	if (format[i] == '%')
 {
-i++;
-int flags = get_flags(format, &i);
-int width = get_width(format, &i, args);
-int precision = get_precision(format, &i, args);
-int size = get_size(format, &i);
+	i++;
+	int flags = get_flags(format, &i);
+	int width = get_width(format, &i, args);
+	int precision = get_precision(format, &i, args);
+	int size = get_size(format, &i);
 
 count += handle_print(format, &i, args, buffer, flags, width, precision, size);
 }
 else
 {
-count += _putchar(format[i]);
-i++;
+	count += _putchar(format[i]);
+	i++;
 }
 }
 
 va_end(args);
 return (count);
 }
-
