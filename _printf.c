@@ -1,59 +1,43 @@
-#include <stdarg.h>
-#include <unistd.h>
+#include "main.h"
 
 /**
- * _putchar - writes a character to stdout
- * @c: the character to print
+ * _printf - Custom implementation of printf function
+ * @format: Format string
  *
- * Return: 1 on success, -1 on error
- */
-int _putchar(char c)
-{
-return (write(1, &c, 1));
-}
-
-/**
- * _printf - prints formatted output to stdout
- * @format: the format string
- *
- * Return: the number of characters printed
+ * Return: Number of characters printed
  */
 int _printf(const char *format, ...)
 {
 va_list args;
-int count = 0;
+int i, count = 0;
 
 va_start(args, format);
 
-while (*format)
+for (i = 0; format[i] != '\0'; i++)
 {
-if (*format == '%')
+if (format[i] == '%')
 {
-format++;
-if (*format == 'c')
+i++;
+switch (format[i])
 {
-char c = va_arg(args, int);
-count += _putchar(c);
-}
-else if (*format == 's')
-{
-char *s = va_arg(args, char *);
-while (*s)
-{
-count += _putchar(*s);
-s++;
-}
-}
-else if (*format == '%')
-{
-count += _putchar('%');
+case 'c':
+count += handle_print("%c", &i, args, NULL, 0, 0, 0, 0);
+break;
+case 's':
+count += handle_print("%s", &i, args, NULL, 0, 0, 0, 0);
+break;
+case '%':
+count += handle_print("%%", &i, args, NULL, 0, 0, 0, 0);
+break;
+default:
+count += handle_print("%%", &i, args, NULL, 0, 0, 0, 0);
+break;
 }
 }
 else
 {
-count += _putchar(*format);
+count += handle_print("%c", NULL, args, &format[i], 0, 0, 0, 0);
 }
-format++;
 }
 
 va_end(args);
