@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 {
 	int i = 0, count = 0;
 	char ch;
-	char str;
+	char *str;
 
 	va_list args;
 
@@ -36,13 +36,14 @@ int _printf(const char *format, ...)
 		else if (format[i] == '%' && format[i + 1] == 's')
 		{
 			i++;
-			str = va_arg(args, int);
-			write(1, &str, 1);
+			str = va_arg(args, char*);
+			write(1, &str[0], i);
 			count++;
 		}
 		else
 		{
 			write(1, &format[i], 1);
+			count++;
 		}
 		i++;
 	}
