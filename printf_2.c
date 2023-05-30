@@ -2,7 +2,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <string.h>
-#include "main.h"
+#include "m2.h"
 /**
  * _printf - prints format c and s
  * @format: character string
