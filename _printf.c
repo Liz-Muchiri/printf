@@ -1,46 +1,51 @@
 #include "main.h"
 
 /**
- * _printf - Custom implementation of printf function
- * @format: Format string
+ * _putchar - writes a character to stdout
+ * @c: the character to write
  *
- * Return: Number of characters printed
+ * Return: the number of characters written (1 on success, -1 on error)
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+/**
+ * _printf - formatted output conversion
+ * @format: the format string
+ * ...: the variable arguments
+ *
+ * Return: the number of characters printed (excluding the null byte)
  */
 int _printf(const char *format, ...)
 {
-va_list args;
-int i, count = 0;
+	va_list args;
+	int count = 0;
+	char buffer[BUFF_SIZE] = {0};
+	int i = 0;
 
-va_start(args, format);
+	va_start(args, format);
 
-for (i = 0; format[i] != '\0'; i++)
+	while (format[i])
 {
-if (format[i] == '%')
+	if (format[i] == '%')
 {
-i++;
-switch (format[i])
-{
-case 'c':
-count += handle_print("%c", &i, args, NULL, 0, 0, 0, 0);
-break;
-case 's':
-count += handle_print("%s", &i, args, NULL, 0, 0, 0, 0);
-break;
-case '%':
-count += handle_print("%%", &i, args, NULL, 0, 0, 0, 0);
-break;
-default:
-count += handle_print("%%", &i, args, NULL, 0, 0, 0, 0);
-break;
-}
+	i++;
+	int flags = get_flags(format, &i);
+	int width = get_width(format, &i, args);
+	int precision = get_precision(format, &i, args);
+	int size = get_size(format, &i);
+
+count += handle_print(format, &i, args, buffer, flags, width, precision, size);
 }
 else
 {
-count += handle_print("%c", NULL, args, &format[i], 0, 0, 0, 0);
+	count += _putchar(format[i]);
+	i++;
 }
 }
 
 va_end(args);
-
 return (count);
 }
