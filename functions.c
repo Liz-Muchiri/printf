@@ -22,7 +22,8 @@ int _printf(const char *format, ...)
 			{
 				int num = va_arg(args, int);
 
-				count += printf("%d", num);
+				count++;
+				putchar(num);
 
 			}
 		}
