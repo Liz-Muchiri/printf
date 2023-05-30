@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
-#include <string.h>
 #include "m2.h"
 /**
  * _printf - prints format c and s
@@ -11,12 +10,11 @@
 int _printf(const char *format, ...)
 {
 	int i = 0, count = 0;
-	char ch;
-	char *str;
-
+	char ch, *str;
 	va_list args;
 
 	va_start(args, format);
+
 	if (format == NULL)
 		return (0);
 	while (format[i] != '\0')
@@ -35,10 +33,13 @@ int _printf(const char *format, ...)
 		}
 		else if (format[i] == '%' && format[i + 1] == 's')
 		{
-			i++;
 			str = va_arg(args, char*);
-			write(1, &str[0], i);
-			count++;
+			while (str[i] != '\0')
+			{
+				write(1, &str[i], 1);
+				i++;
+				count++;
+			}
 		}
 		else
 		{
