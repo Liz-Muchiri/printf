@@ -28,7 +28,8 @@ int _printf(const char *format, ...)
 		}
 		else if (format[i] == '%' && format[i + 1] == '%')
 		{
-			write(1, "%%", 1);
+			i++;
+			write(1, "%", 1);
 			count++;
 		}
 		else if (format[i] == '%' && format[i + 1] == 's')
