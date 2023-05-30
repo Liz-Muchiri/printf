@@ -38,8 +38,8 @@ int _printf(const char *format, ...)
 			{
 				write(1, &str[i], 1);
 				i++;
-				count++;
 			}
+			count++;
 		}
 		else
 		{
