@@ -1,4 +1,7 @@
 #include "m2.h"
+#include <unistd.h>
+#include <stdio.h>
+#include <stdarg.h>
 /**
  * _printf - prints acording to a format
  * @format: character string
