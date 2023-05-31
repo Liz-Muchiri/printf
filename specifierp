@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+int main() {
+    int num = 42;
+    int *ptr = &num;
+
+    printf("The value of the pointer is: %p\n", (void *)ptr);
+
+    return 0;
+}
+
