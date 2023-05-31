@@ -35,6 +35,10 @@ int _printf(const char *format, ...)
 		{
 			i++;
 			string = va_arg(args, char*);
+			if (string == NULL)
+			{
+				string = "(null)";
+			}
 			while (*string)
 			{
 				write(1, &string[0], 1);
