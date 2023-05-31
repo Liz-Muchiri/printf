@@ -9,15 +9,14 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, count = 0;
-	char ch, *str;
+	int i, count = 0;
+	char ch, *string;
 	va_list args;
 
 	va_start(args, format);
-
 	if (format == NULL)
 		return (-1);
-	while (format[i] != '\0')
+	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%' &&  format[i + 1] == 'c')
 		{
@@ -35,11 +34,11 @@ int _printf(const char *format, ...)
 		else if (format[i] == '%' && format[i + 1] == 's')
 		{
 			i++;
-			str = va_arg(args, char*);
-			while (*str)
+			string = va_arg(args, char*);
+			while (*string)
 			{
-				write(1, &str[0], 1);
-				str++;
+				write(1, &string[0], 1);
+				string++;
 				count++;
 			}
 		}
@@ -48,8 +47,6 @@ int _printf(const char *format, ...)
 			write(1, &format[i], 1);
 			count++;
 		}
-		i++;
 	}
-	va_end(args);
 	return (count);
 }
