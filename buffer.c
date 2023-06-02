@@ -3,18 +3,7 @@
 #include "m2.h"
 #include <stdio.h>
 #define BUFFER 1024
-/**
- * print_buffer - prints with description
- * @b: array
- * @b_ind: buffer index
- */
-void print_buffer(char b[], int *b_ind)
-{
-	if (*b_ind > 0)
-		write(1, &b[0], *b_ind);
-	*b_ind = 0;
-}
-
+void print_buffer(char b[], int *b_ind);
 /**
  * _printf - prints according to a format
  * @format: specifier
@@ -70,4 +59,16 @@ int _printf(const char *format, ...)
 		}
 	}
 	return (count);
+}
+
+/**
+ * print_buffer - prints with description
+ * @b: array
+ * @b_ind: buffer index
+ */
+void print_buffer(char b[], int *b_ind)
+{
+	if (*b_ind > 0)
+		write(1, &b[0], *b_ind);
+	*b_ind = 0;
 }
