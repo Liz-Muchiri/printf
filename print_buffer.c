@@ -11,7 +11,7 @@
 void print_buffer(char b[], int *b_ind)
 {
 	if (*b_ind > 0)
-		write(1,&b[0], *b_ind);
+		write(1, &b[0], *b_ind);
 	*b_ind = 0;
 }
 int _printf(const char *format, ...)
