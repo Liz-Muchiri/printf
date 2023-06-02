@@ -5,6 +5,9 @@
 #define BUFFER 1024
 /**
  * _printf - prints with buffer format s and c
+ * print_buffer - prints with description
+ * @b: array
+ * @b_ind: buffer index
  * @format: string
  * Return: number of characters printed
  */
