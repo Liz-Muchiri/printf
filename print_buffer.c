@@ -4,12 +4,9 @@
 #include <stdio.h>
 #define BUFFER 1024
 /**
- * _printf - prints with buffer format s and c
  * print_buffer - prints with description
  * @b: array
  * @b_ind: buffer index
- * @format: string
- * Return: number of characters printed
  */
 void print_buffer(char b[], int *b_ind)
 {
@@ -17,6 +14,12 @@ void print_buffer(char b[], int *b_ind)
 		write(1, &b[0], *b_ind);
 	*b_ind = 0;
 }
+
+/**
+ * _printf - prints according to a format
+ * @format: specifier
+ * Return: number of characters printed
+ */
 int _printf(const char *format, ...)
 {
 	int i, count = 0, b_ind = 0;
