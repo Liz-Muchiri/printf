@@ -2,7 +2,6 @@
 #include <stdarg.h>
 #include "m2.h"
 #include <stdio.h>
-#define BUFFER 1024
 void print_buffer(char b[], int *b_ind);
 /**
  * _printf - prints according to a format
