@@ -11,7 +11,7 @@ int _putchar( char c);
 int _printf(const char *format, ...)
 {
 	int i, count;
-	unsigned long int num;
+	long int num;
 	va_list numbers;
 
 	va_start(numbers, format);
@@ -64,5 +64,5 @@ int _printf(const char *format, ...)
  */
 int _putchar(char a)
 {
-	return(write(1, &a, 1);
+	return(write(1, &a, 1));
 }
