@@ -56,7 +56,20 @@ int _printf(const char *format, ...)
 			if (b_ind <= BUFFER)
 				print_buffer(b, &b_ind);
 			count++;
+
 		}
 	}
 	return (count);
+}
+
+/**
+ * print_buffer - prints with description
+ * @b: array
+ * @b_ind: buffer index
+ */
+void print_buffer(char b[], int *b_ind)
+{
+	if (*b_ind > 0)
+		write(1, &b[0], *b_ind);
+	*b_ind = 0;
 }
