@@ -3,12 +3,12 @@
 #include <stdarg.h>
 #include "m2.h"
 /**
- * _printf - prints specifiers d and i
+ * _print - prints specifiers d and i
  * @format: specifier string
  * Return: count
  */
 int _putchar(char a);
-int _printf(const char *format, ...)
+int _print(const char *format, ...)
 {
 	int i, count;
 	long int num;
