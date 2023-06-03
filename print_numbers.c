@@ -7,7 +7,7 @@
  * @format: specifier string
  * Return: count
  */
-int _putchar( char c);
+int _putchar(char a);
 int _printf(const char *format, ...)
 {
 	int i, count;
