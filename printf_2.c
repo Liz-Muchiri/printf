@@ -2,6 +2,8 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include "m2.h"
+#define BUFFER 1024
+void print_buffer(char b[], int *b_ind);
 /**
  * _printf - prints format c and s
  * @format: character string
@@ -9,8 +11,8 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, count = 0;
-	char ch, *string;
+	int i, count = 0, b_ind = 0;
+	char ch, *string, b[BUFFER];
 	va_list args;
 
 	va_start(args, format);
@@ -39,7 +41,9 @@ int _printf(const char *format, ...)
 				string = "(null)";
 			while (*string)
 			{
-				write(1, &string[0], 1);
+				b[b_ind] = *string;
+				if (b_ind <= BUFFER)
+					print_buffer(b, &b_ind);
 				string++;
 				count++;
 			}
@@ -48,7 +52,9 @@ int _printf(const char *format, ...)
 		{
 			if (format[i] == '%' && format[i + 1] == '\0')
 				return (-1);
-			write(1, &format[i], 1);
+			b[b_ind] = format[i];
+			if (b_ind <= BUFFER)
+				print_buffer(b, &b_ind);
 			count++;
 		}
 	}
