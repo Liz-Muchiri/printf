@@ -41,7 +41,7 @@ int _printf(const char *format, ...)
 				string = "(null)";
 			while (*string)
 			{
-				b[b_ind] = *string;
+				b[b_ind++] = *string;
 				if (b_ind <= BUFFER)
 					print_buffer(b, &b_ind);
 				string++;
@@ -52,7 +52,7 @@ int _printf(const char *format, ...)
 		{
 			if (format[i] == '%' && format[i + 1] == '\0')
 				return (-1);
-			b[b_ind] = format[i];
+			b[b_ind++] = format[i];
 			if (b_ind <= BUFFER)
 				print_buffer(b, &b_ind);
 			count++;
